@@ -12,7 +12,7 @@ class Board
     @index_start1 = 0
     @index_start2 = 0
     @prefix = {}
-    @used = Array.new(4) { [0] * 4 }
+    @used = Array.new(4) {[0] * 4}
   end
 
   def boardSolver1st()
@@ -25,9 +25,9 @@ class Board
   def boardSolver2(index1, index2, prefix1)
     @possible_directions.each do |x,y|
       if (0..3) === (x + index1) && (0..3) === (y + index2) 
-        prefix = prefix1 + @board[x+index1][y+index2]
+        prefix = prefix1 + @board[x + index1][y + index2]
         if find_prefix(prefix) == true
-         @prefix[prefix] = "#{x+index1}-#{y+index2}"
+         @prefix[prefix] = "#{x + index1}-#{y + index2}"
        end
       end 
     end
@@ -43,9 +43,7 @@ class Board
     index = indexes[i].split("-")
     if is_word(prefixArray[i]) == true
       @words << prefixArray[i]
-
     end
-
     @prefix = {}
     boardSolver2(index[0].to_i, index[1].to_i, prefixArray[i])
     i += 1
@@ -53,7 +51,6 @@ class Board
 end
 
 def is_word(word)
-
   if @trie.has_key?(word) == true && word.length > 2 && @words.include?(word) == false
     return true
   else
@@ -72,7 +69,6 @@ end
 def words
   return @words
 end
-
 
 def move() 
   if @used[0][1] == 0  
